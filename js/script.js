@@ -79,134 +79,74 @@ var categorias = [
         nombre: 'Farmacias',
         imagen: 'farmacia.png',
         descripcion: 'Lorem ipsum.',
-        empresas: [
-            {
-                codigo: 'E-1',
-                nombre: 'Farmacias Kielsa',
-                descripcion: 'Ubicados en cualquier punto estratégico del país.',
-                telefono: '2772-0011',
-                calificacion: 5,
-                direccion: 'Estamos ubicados en el boulevard Morazán.',
-                correo: 'kielsahonduras@kielsa.com',
-                logo: 'kielsa-logo.png',
-                banner: 'kielsa-banner.png',
-                productos: [
-                    {
-                        codigo: 'P-1',
-                        nombre: 'Panadol ultra 104 tabletas',
-                        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
-                        cantiddad: 25,
-                        precio: 314.95,
-                        imagen: 'panadol-ultra.jpg'
-                    },
-                    {
-                        codigo: 'P-2',
-                        nombre: 'Sudagrip antigripal',
-                        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
-                        cantiddad: 100,
-                        precio: 14.98,
-                        imagen: 'sudagrip-antigripal.png'
-                    }
-                ]
-            },
-            {
-                codigo: 'E-2',
-                nombre: 'Farmacias del ahorro',
-                descripcion: 'Ubicados en cualquier punto estratégico del país.',
-                telefono: '2772-2020',
-                calificacion: 4,
-                direccion: 'Estamos ubicados en el boulevard fuerzas armadas.',
-                correo: 'farmaciasdelahorro@ahorro.com',
-                logo: 'ahorro-logo.png',
-                banner: 'ahorro-banner.png',
-                productos: [
-                    {
-                        codigo: 'P-3',
-                        nombre: 'Panadol ultra 104 tabletas',
-                        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
-                        cantiddad: 25,
-                        precio: 314.95,
-                        imagen: 'panadol-ultra.jpg'
-                    },
-                    {
-                        codigo: 'P-4',
-                        nombre: 'Sudagrip antigripal',
-                        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
-                        cantiddad: 100,
-                        precio: 14.98,
-                        imagen: 'sudagrip-antigripal.png'
-                    }
-                ]
-            }
-        ]
-    },
+    }          
+];
+
+var empresas = [
     {
-        codigo: 'C-2',
-        nombre: 'Farmacias',
-        imagen: 'farmacia.png',
-        descripcion: 'Lorem ipsum.',
-        empresas: [
-            {
-                codigo: 'E-3',
-                nombre: 'Farmacias Kielsa',
-                descripcion: 'Ubicados en cualquier punto estratégico del país.',
-                telefono: '2772-0011',
-                calificacion: 5,
-                direccion: 'Estamos ubicados en el boulevard Morazán.',
-                correo: 'kielsahonduras@kielsa.com',
-                logo: 'kielsa-logo.png',
-                banner: 'kielsa-banner.png',
-                productos: [
-                    {
-                        codigo: 'P-5',
-                        nombre: 'Panadol ultra 104 tabletas',
-                        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
-                        cantiddad: 25,
-                        precio: 314.95,
-                        imagen: 'panadol-ultra.jpg'
-                    },
-                    {
-                        codigo: 'P-6',
-                        nombre: 'Sudagrip antigripal',
-                        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
-                        cantiddad: 100,
-                        precio: 14.98,
-                        imagen: 'sudagrip-antigripal.png'
-                    }
-                ]
-            },
-            {
-                codigo: 'E-4',
-                nombre: 'Farmacias del ahorro',
-                descripcion: 'Ubicados en cualquier punto estratégico del país.',
-                telefono: '2772-2020',
-                calificacion: 4,
-                direccion: 'Estamos ubicados en el boulevard fuerzas armadas.',
-                correo: 'farmaciasdelahorro@ahorro.com',
-                logo: 'ahorro-logo.png',
-                banner: 'ahorro-banner.png',
-                productos: [
-                    {
-                        codigo: 'P-7',
-                        nombre: 'Panadol ultra 104 tabletas',
-                        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
-                        cantiddad: 25,
-                        precio: 314.95,
-                        imagen: 'panadol-ultra.jpg'
-                    },
-                    {
-                        codigo: 'P-8',
-                        nombre: 'Sudagrip antigripal',
-                        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
-                        cantiddad: 100,
-                        precio: 14.98,
-                        imagen: 'sudagrip-antigripal.png'
-                    }
-                ]
-            }
-        ]
+        codigo: 'E-1',
+        nombre: 'Farmacias Kielsa',
+        descripcion: 'Ubicados en cualquier punto estratégico del país.',
+        telefono: '2772-0011',
+        calificacion: 5,
+        direccion: 'Estamos ubicados en el boulevard Morazán.',
+        correo: 'kielsahonduras@kielsa.com',
+        logo: 'kielsa-logo.png',
+        banner: 'kielsa-banner.png',
+        codigoCategoria: 'C-1'
+    }, 
+    {
+        codigo: 'E-2',
+        nombre: 'Farmacias del ahorro',
+        descripcion: 'Ubicados en cualquier punto estratégico del país.',
+        telefono: '2772-2020',
+        calificacion: 4,
+        direccion: 'Estamos ubicados en el boulevard fuerzas armadas.',
+        correo: 'farmaciasdelahorro@ahorro.com',
+        logo: 'ahorro-logo.png',
+        banner: 'ahorro-banner.png',
+        codigoCategoria: 'C-1'
     }
 ];
+
+var productos = [
+    {
+        codigo: 'P-1',
+        nombre: 'Panadol ultra 104 tabletas',
+        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
+        cantidad: 25,
+        precio: 314.95,
+        imagen: 'panadol-ultra.jpg',
+        codigoEmpresa: 'E-1'
+    },
+    {
+        codigo: 'P-2',
+        nombre: 'Sudagrip antigripal',
+        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
+        cantidad: 100,
+        precio: 14.98,
+        imagen: 'sudagrip-antigripal.png',
+        codigoEmpresa: 'E-1'
+    },
+    {
+        codigo: 'P-3',
+        nombre: 'Panadol ultra 104 tabletas',
+        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
+        cantidad: 25,
+        precio: 314.95,
+        imagen: 'panadol-ultra.jpg',
+        codigoEmpresa: 'E-2'
+    },
+    {
+        codigo: 'P-4',
+        nombre: 'Sudagrip antigripal',
+        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
+        cantidad: 100,
+        precio: 14.98,
+        imagen: 'sudagrip-antigripal.png',
+        codigoEmpresa: 'E-2'
+    }
+]
 
 var ordenes = [
     {
@@ -247,16 +187,6 @@ var ordenes = [
         }
     }
 ];
-
-localStorage.setItem('usuarios', JSON.stringify(usuarios));
-localStorage.setItem('categorias', JSON.stringify(categorias));
-localStorage.setItem('ordenes', JSON.stringify(ordenes));
-
-function obtenerLocalStorage() {
-    usuarios = JSON.parse(localStorage.getItem('usuarios'));
-    categorias = JSON.parse(localStorage.getItem('categorias'));
-    ordenes = JSON.parse(localStorage.getItem('ordenes'));
-}
 
 function llamarModal(orden) {
     $('#modal').modal(orden);
@@ -614,5 +544,3 @@ function actualizarBotones(idOrden) {
     document.getElementById(`boton-${estado}`).classList.add('boton-rojo');
     document.getElementById(`boton-${estado}`).classList.remove('borde-naranja');
 }
-
-obtenerLocalStorage();
