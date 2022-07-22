@@ -1,241 +1,263 @@
+var usuarios = [
+    {
+        codigo: 'U-1',
+        nombre: 'Juan',
+        usuario: 'juan123',
+        password: '1234',
+        tipo: 'A'
+    },
+    {
+        codigo: 'U-2',
+        nombre: 'Pedro',
+        usuario: 'pedro123',
+        password: '1234',
+        tipo: 'A'
+    },
+    {
+        codigo: 'U-3',
+        nombre: 'Carlos',
+        usuario: 'carlos123',
+        password: '1234',
+        tipo: 'B',
+        aprobado: true,
+        ordenesTomadas: [],
+        ordenesEntregadas: []
+    },
+    {
+        codigo: 'U-4',
+        nombre: 'María',
+        usuario: 'maria123',
+        password: '1234',
+        tipo: 'B',
+        aprobado: false,
+        ordenesTomadas: [],
+        ordenesEntregadas: []
+    },
+    {
+        codigo: 'U-5',
+        nombre: 'Alberto',
+        usuario: 'alberto123',
+        password: '1234',
+        tipo: 'B',
+        aprobado: null,
+        ordenesTomadas: [],
+        ordenesEntregadas: []
+    },
+    {
+        codigo: 'U-6',
+        nombre: 'Alex',
+        usuario: 'alex123',
+        password: '1234',
+        tipo: 'C'
+    },
+    {
+        codigo: 'U-7',
+        nombre: 'Matusalen',
+        usuario: 'matusalen123',
+        password: '1234',
+        tipo: 'C'
+    },
+    {
+        codigo: 'U-8',
+        nombre: 'Francisco',
+        usuario: 'francisco123',
+        password: '1234',
+        tipo: 'C'
+    },
+    {
+        codigo: 'U-9',
+        nombre: 'Paola',
+        usuario: 'paola123',
+        password: '1234',
+        tipo: 'C'
+    }
+];
+
+var categorias = [
+    {
+        codigo: 'C-1',
+        nombre: 'Farmacias',
+        imagen: 'farmacia.png',
+        descripcion: 'Lorem ipsum.',
+        empresas: [
+            {
+                codigo: 'E-1',
+                nombre: 'Farmacias Kielsa',
+                descripcion: 'Ubicados en cualquier punto estratégico del país.',
+                telefono: '2772-0011',
+                calificacion: 5,
+                direccion: 'Estamos ubicados en el boulevard Morazán.',
+                correo: 'kielsahonduras@kielsa.com',
+                logo: 'kielsa-logo.png',
+                banner: 'kielsa-banner.png',
+                productos: [
+                    {
+                        codigo: 'P-1',
+                        nombre: 'Panadol ultra 104 tabletas',
+                        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
+                        cantiddad: 25,
+                        precio: 314.95,
+                        imagen: 'panadol-ultra.jpg'
+                    },
+                    {
+                        codigo: 'P-2',
+                        nombre: 'Sudagrip antigripal',
+                        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
+                        cantiddad: 100,
+                        precio: 14.98,
+                        imagen: 'sudagrip-antigripal.png'
+                    }
+                ]
+            },
+            {
+                codigo: 'E-2',
+                nombre: 'Farmacias del ahorro',
+                descripcion: 'Ubicados en cualquier punto estratégico del país.',
+                telefono: '2772-2020',
+                calificacion: 4,
+                direccion: 'Estamos ubicados en el boulevard fuerzas armadas.',
+                correo: 'farmaciasdelahorro@ahorro.com',
+                logo: 'ahorro-logo.png',
+                banner: 'ahorro-banner.png',
+                productos: [
+                    {
+                        codigo: 'P-3',
+                        nombre: 'Panadol ultra 104 tabletas',
+                        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
+                        cantiddad: 25,
+                        precio: 314.95,
+                        imagen: 'panadol-ultra.jpg'
+                    },
+                    {
+                        codigo: 'P-4',
+                        nombre: 'Sudagrip antigripal',
+                        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
+                        cantiddad: 100,
+                        precio: 14.98,
+                        imagen: 'sudagrip-antigripal.png'
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        codigo: 'C-2',
+        nombre: 'Farmacias',
+        imagen: 'farmacia.png',
+        descripcion: 'Lorem ipsum.',
+        empresas: [
+            {
+                codigo: 'E-3',
+                nombre: 'Farmacias Kielsa',
+                descripcion: 'Ubicados en cualquier punto estratégico del país.',
+                telefono: '2772-0011',
+                calificacion: 5,
+                direccion: 'Estamos ubicados en el boulevard Morazán.',
+                correo: 'kielsahonduras@kielsa.com',
+                logo: 'kielsa-logo.png',
+                banner: 'kielsa-banner.png',
+                productos: [
+                    {
+                        codigo: 'P-5',
+                        nombre: 'Panadol ultra 104 tabletas',
+                        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
+                        cantiddad: 25,
+                        precio: 314.95,
+                        imagen: 'panadol-ultra.jpg'
+                    },
+                    {
+                        codigo: 'P-6',
+                        nombre: 'Sudagrip antigripal',
+                        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
+                        cantiddad: 100,
+                        precio: 14.98,
+                        imagen: 'sudagrip-antigripal.png'
+                    }
+                ]
+            },
+            {
+                codigo: 'E-4',
+                nombre: 'Farmacias del ahorro',
+                descripcion: 'Ubicados en cualquier punto estratégico del país.',
+                telefono: '2772-2020',
+                calificacion: 4,
+                direccion: 'Estamos ubicados en el boulevard fuerzas armadas.',
+                correo: 'farmaciasdelahorro@ahorro.com',
+                logo: 'ahorro-logo.png',
+                banner: 'ahorro-banner.png',
+                productos: [
+                    {
+                        codigo: 'P-7',
+                        nombre: 'Panadol ultra 104 tabletas',
+                        descripcion: 'Panadol Ultra 104 tabletas para aliviar dolores.',
+                        cantiddad: 25,
+                        precio: 314.95,
+                        imagen: 'panadol-ultra.jpg'
+                    },
+                    {
+                        codigo: 'P-8',
+                        nombre: 'Sudagrip antigripal',
+                        descripcion: 'Ingredientes activos: Acetaminofen, Sulfato de Amantadina,Fenilefrina, Clorfeniramina, Vitamica C con acción antialérgica que alivia los síntomas de la gripe y tos. Suprime los síntomas gripales como el dolor de cuerpo.',
+                        cantiddad: 100,
+                        precio: 14.98,
+                        imagen: 'sudagrip-antigripal.png'
+                    }
+                ]
+            }
+        ]
+    }
+];
+
 var ordenes = [
     {
-        id: 'O-1',
+        codigo: 'O-1',
         nombre: 'Orden 1',
         estado: 'disponible',
-        productos: [
-            {
-                id: 'P-1',
-                nombre: 'Producto 2',
-                cantidad: 2
-            },
-            {
-                id: 'P-2',
-                nombre: 'Producto 1',
-                cantidad: 5
-            },
-            {
-                id: 'P-3',
-                nombre: 'Producto 5',
-                cantidad: 1
-            }            
-        ],
         cliente: {
-            nombre: 'Christian',
-            telefono: '+504 9716-0785',
-            correo: 'christianarielph@gmail.com'
+            nombre: 'Alex',
+            telefono: '9199-1111',
+            correo: 'alex@unah.hn'
         },
         envio: {
-            empresa: 'Empresa 1',
-            direccion: 'Lorem ipsum.',
-            subtotal: 299.97,
-            total: 389.97,
-            imagen: 'mapa 1.png',
+            productos: [
+                {
+                    codigo: 'P-1',
+                    nombre: 'Panadol ultra 104 tabletas',
+                    precio: 314.95,
+                    cantidad: 3
+                },
+                {
+                    codigo: 'P-2',
+                    nombre: 'Sudagrip antigripal',
+                    precio: 14.98,
+                    cantidad: 2
+                }
+            ],
+            direccion: 'lorem ipsum.',
+            empresa: 'Farmacias Kielsa',
+            subtotal: 974.81,
+            isv: 146.22,
+            comisionMotorista: 97.48,
+            comisionAdministrador: 48.74,
+            total: 292.44,
             estado: null,
-            isv: 45,
-            comisionMotorista: 30,
-            comisionAdministrador: 15,
+            coordenadas: null,
             motorista: null,
-        }
-    },
-    {
-        id: 'O-2',
-        nombre: 'Orden 2',
-        estado: 'sin entregar',
-        productos: [
-            {
-                id: 'P-1',
-                nombre: 'Producto 2',
-                cantidad: 1
-            },
-            {
-                id: 'P-2',
-                nombre: 'Producto 1',
-                cantidad: 1
-            },
-            {
-                id: 'P-3',
-                nombre: 'Producto 5',
-                cantidad: 1
-            }            
-        ],
-        cliente: {
-            nombre: 'Christian',
-            telefono: '+504 9716-0785',
-            correo: 'christianarielph@gmail.com'
-        },
-        envio: {
-            empresa: 'Empresa 1',
-            direccion: 'Lorem ipsum.',
-            subtotal: 299.97,
-            total: 389.97,
-            imagen: 'mapa 1.png',
-            estado: 'tomada',
-            isv: 45,
-            comisionMotorista: 30,
-            comisionAdministrador: 15,
-            motorista: 'Juan',
-        }
-    },
-    {
-        id: 'O-3',
-        nombre: 'Orden 3',
-        estado: 'sin entregar',
-        productos: [
-            {
-                id: 'P-1',
-                nombre: 'Producto 2',
-                cantidad: 2
-            },
-            {
-                id: 'P-2',
-                nombre: 'Producto 1',
-                cantidad: 5
-            },
-            {
-                id: 'P-3',
-                nombre: 'Producto 5',
-                cantidad: 1
-            }            
-        ],
-        cliente: {
-            nombre: 'Christian',
-            telefono: '+504 9716-0785',
-            correo: 'christianarielph@gmail.com'
-        },
-        envio: {
-            empresa: 'Empresa 1',
-            direccion: 'Lorem ipsum.',
-            subtotal: 299.97,
-            total: 389.97,
-            imagen: 'mapa 1.png',
-            estado: 'enOrigen',
-            isv: 45,
-            comisionMotorista: 30,
-            comisionAdministrador: 15,
-            motorista: 'Juan',
-        }
-    },
-    {
-        id: 'O-4',
-        nombre: 'Orden 4',
-        estado: 'disponible',
-        productos: [
-            {
-                id: 'P-1',
-                nombre: 'Producto 2',
-                cantidad: 2
-            },
-            {
-                id: 'P-2',
-                nombre: 'Producto 1',
-                cantidad: 5
-            },
-            {
-                id: 'P-3',
-                nombre: 'Producto 5',
-                cantidad: 1
-            }            
-        ],
-        cliente: {
-            nombre: 'Christian',
-            telefono: '+504 9716-0785',
-            correo: 'christianarielph@gmail.com'
-        },
-        envio: {
-            empresa: 'Empresa 1',
-            direccion: 'Lorem ipsum.',
-            subtotal: 299.97,
-            total: 389.97,
-            imagen: 'mapa 1.png',
-            estado: null,
-            isv: 45,
-            comisionMotorista: 30,
-            comisionAdministrador: 15,
-            motorista: null,
-        }
-    },
-    {
-        id: 'O-5',
-        nombre: 'Orden 5',
-        estado: 'entregada',
-        productos: [
-            {
-                id: 'P-1',
-                nombre: 'Producto 2',
-                cantidad: 2
-            },
-            {
-                id: 'P-2',
-                nombre: 'Producto 1',
-                cantidad: 5
-            },
-            {
-                id: 'P-3',
-                nombre: 'Producto 5',
-                cantidad: 1
-            }            
-        ],
-        cliente: {
-            nombre: 'Christian',
-            telefono: '+504 9716-0785',
-            correo: 'christianarielph@gmail.com'
-        },
-        envio: {
-            empresa: 'Empresa 1',
-            direccion: 'Lorem ipsum.',
-            subtotal: 299.97,
-            total: 389.97,
-            imagen: 'mapa 1.png',
-            estado: 'en destino',
-            isv: 45,
-            comisionMotorista: 30,
-            comisionAdministrador: 15,
-            motorista: 'Juan',
-        }
-    },
-    {
-        id: 'O-6',
-        nombre: 'Orden 6',
-        estado: 'disponible',
-        productos: [
-            {
-                id: 'P-1',
-                nombre: 'Producto 2',
-                cantidad: 2
-            },
-            {
-                id: 'P-2',
-                nombre: 'Producto 1',
-                cantidad: 5
-            },
-            {
-                id: 'P-3',
-                nombre: 'Producto 5',
-                cantidad: 1
-            }            
-        ],
-        cliente: {
-            nombre: 'Christian',
-            telefono: '+504 9716-0785',
-            correo: 'christianarielph@gmail.com'
-        },
-        envio: {
-            empresa: 'Empresa 1',
-            direccion: 'Lorem ipsum.',
-            subtotal: 299.97,
-            total: 389.97,
-            imagen: 'mapa 1.png',
-            estado: null,
-            isv: 45,
-            comisionMotorista: 30,
-            comisionAdministrador: 15,
-            motorista: null,
-        }
-    }    
-]
 
-//funcionalidad
+        }
+    }
+];
+
+localStorage.setItem('usuarios', JSON.stringify(usuarios));
+localStorage.setItem('categorias', JSON.stringify(categorias));
+localStorage.setItem('ordenes', JSON.stringify(ordenes));
+
+function obtenerLocalStorage() {
+    usuarios = JSON.parse(localStorage.getItem('usuarios'));
+    categorias = JSON.parse(localStorage.getItem('categorias'));
+    ordenes = JSON.parse(localStorage.getItem('ordenes'));
+}
+
 function llamarModal(orden) {
     $('#modal').modal(orden);
 }
@@ -253,7 +275,7 @@ function cambiarSection(valor) {
                 `<div class="p-1">
                     <div class="borde-azul p-1 radius contenedor-verOrdenes">
                         <h4 class="pl-2 texto-gris mt-2">${orden.nombre}</h4>
-                        <button class="boton boton-naranja" onclick="abrirOrden(1); dibujarContenido(1, '${orden.id}');">ver orden</button>
+                        <button class="boton boton-naranja" onclick="abrirOrden(1); dibujarContenido(1, '${orden.codigo}');">ver orden</button>
                     </div>
                 </div>`;
             });
@@ -270,7 +292,7 @@ function cambiarSection(valor) {
                 `<div class="p-1">
                     <div class="borde-azul p-1 radius contenedor-verOrdenes">
                         <h4 class="pl-2 texto-gris mt-2">${orden.nombre}</h4>
-                        <button class="boton boton-naranja" onclick="abrirOrden(2); dibujarContenido(2, '${orden.id}');">ver orden</button>
+                        <button class="boton boton-naranja" onclick="abrirOrden(2); dibujarContenido(2, '${orden.codigo}');">ver orden</button>
                     </div>
                 </div>`;
             });
@@ -287,7 +309,7 @@ function cambiarSection(valor) {
                     `<div class="p-1">
                         <div class="borde-azul p-1 radius contenedor-verOrdenes">
                             <h4 class="pl-2 texto-gris mt-2">${orden.nombre}</h4>
-                            <button class="boton boton-naranja" onclick="abrirOrden(3); dibujarContenido(3, '${orden.id}');">ver orden</button>
+                            <button class="boton boton-naranja" onclick="abrirOrden(3); dibujarContenido(3, '${orden.codigo}');">ver orden</button>
                         </div>
                     </div>`;
                 });
@@ -324,10 +346,10 @@ function dibujarContenido(valor, idOrden) {
 
     sectionActual = document.getElementById(`section-${valor}-1`);
 
-    ordenActual = ordenes.filter(orden => orden.id == idOrden)[0];
+    ordenActual = ordenes.filter(orden => orden.codigo == idOrden)[0];
 
     let productos = '';
-    ordenActual.productos.forEach(producto => {
+    ordenActual.envio.productos.forEach(producto => {
         productos += producto.cantidad + ' ' + producto.nombre + '; ';
     });
 
@@ -474,7 +496,7 @@ function dibujarContenido(valor, idOrden) {
 }
 
 function tomarOrden(idOrden) {
-    let o = ordenes.filter(orden => orden.id == idOrden)[0];
+    let o = ordenes.filter(orden => orden.codigo == idOrden)[0];
 
     o.estado = 'sin entregar';
     o.envio.motorista = 'Juan';
@@ -499,7 +521,7 @@ function tomarOrden(idOrden) {
 }
 
 function estadoOrden(estado, idOrden) {
-    let o = ordenes.filter(orden => orden.id == idOrden)[0];
+    let o = ordenes.filter(orden => orden.codigo == idOrden)[0];
 
     if (estado != 'entregada') {
         let botones = document.getElementsByClassName('botones-entregando');
@@ -519,7 +541,7 @@ function estadoOrden(estado, idOrden) {
         modalRepartidor = document.getElementById('modal-body-repartidor');
 
         let productos = '';
-        o.productos.forEach(producto => {
+        o.envio.productos.forEach(producto => {
             productos += producto.cantidad + ' ' + producto.nombre + '; ';
         });
 
@@ -583,7 +605,7 @@ function estadoOrden(estado, idOrden) {
 }
 
 function actualizarBotones(idOrden) {
-    let estado = ordenes.filter(orden => orden.id == idOrden)[0].envio.estado;
+    let estado = ordenes.filter(orden => orden.codigo == idOrden)[0].envio.estado;
     let botones = document.getElementsByClassName('botones-entregando');
     Array.from(botones).forEach(boton => {
         boton.classList.add('borde-naranja');
@@ -592,3 +614,5 @@ function actualizarBotones(idOrden) {
     document.getElementById(`boton-${estado}`).classList.add('boton-rojo');
     document.getElementById(`boton-${estado}`).classList.remove('borde-naranja');
 }
+
+obtenerLocalStorage();
