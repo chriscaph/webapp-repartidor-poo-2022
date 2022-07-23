@@ -185,6 +185,43 @@ var ordenes = [
             motorista: null,
 
         }
+    },
+    {
+        codigo: 'O-2',
+        nombre: 'Orden 2',
+        estado: 'disponible',
+        cliente: {
+            nombre: 'Alex',
+            telefono: '9199-1111',
+            correo: 'alex@unah.hn'
+        },
+        envio: {
+            productos: [
+                {
+                    codigo: 'P-1',
+                    nombre: 'Panadol ultra 104 tabletas',
+                    precio: 314.95,
+                    cantidad: 3
+                },
+                {
+                    codigo: 'P-2',
+                    nombre: 'Sudagrip antigripal',
+                    precio: 14.98,
+                    cantidad: 2
+                }
+            ],
+            direccion: 'lorem ipsum.',
+            empresa: 'Farmacias Kielsa',
+            subtotal: 974.81,
+            isv: 146.22,
+            comisionMotorista: 97.48,
+            comisionAdministrador: 48.74,
+            total: 292.44,
+            estado: null,
+            coordenadas: [87, -90],
+            motorista: null,
+
+        }
     }
 ];
 
@@ -222,7 +259,7 @@ function cambiarSection(valor) {
                 `<div class="p-1">
                     <div class="borde-azul p-1 radius contenedor-verOrdenes">
                         <h4 class="pl-2 texto-gris mt-2">${orden.nombre}</h4>
-                        <button class="boton boton-naranja" onclick="abrirOrden(2); dibujarContenido(2, '${orden.codigo}');">ver orden</button>
+                        <button class="boton boton-naranja" onclick="abrirOrden(2); dibujarContenido(2, '${orden.codigo}'); cargarMapa2();">ver orden</button>
                     </div>
                 </div>`;
             });
@@ -289,11 +326,11 @@ function dibujarContenido(valor, idOrden) {
             `<div class="titulo-section borde-naranja px-1">Detalle de la orden "${ordenActual.nombre}"</div>
             <div class="borde-naranja row mt-3 subsection pt-3">
                 <div class="titulo-section borde-naranja px-1">Información del cliente</div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Nombre:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.cliente.nombre}</h6>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Celular:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.cliente.telefono}</h6>
                 </div>
@@ -304,15 +341,15 @@ function dibujarContenido(valor, idOrden) {
             </div>
             <div class="borde-naranja row mt-4 subsection py-3">
                 <div class="titulo-section borde-naranja px-1">Detalle del envío</div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Productos:</h6>
                     <h6 class="texto-gris ml-5">${productos}</h6>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Empresa:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.envio.empresa}</h6>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Total a pagar:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.envio.total} Lps.</h6>
                 </div>
@@ -331,11 +368,11 @@ function dibujarContenido(valor, idOrden) {
             `<div class="titulo-section borde-naranja px-1">Detalle de la orden "${ordenActual.nombre}"</div>
             <div class="borde-naranja row mt-3 subsection pt-3">
                 <div class="titulo-section borde-naranja px-1">Información del cliente</div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Nombre:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.cliente.nombre}</h6>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Celular:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.cliente.telefono}</h6>
                 </div>
@@ -346,27 +383,27 @@ function dibujarContenido(valor, idOrden) {
             </div>
             <div class="borde-naranja row mt-4 subsection py-3">
                 <div class="titulo-section borde-naranja px-1">Detalle del envío</div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Productos:</h6>
                     <h6 class="texto-gris ml-5">${productos}</h6>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Empresa:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.envio.empresa}</h6>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Total a pagar:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.envio.total} Lps.</h6>
                 </div>
                 <div class="col-12 mb-3">
                     <h6>Dirección:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.envio.direccion}</h6>
-                    <img src="img/${ordenActual.envio.imagen}" class="ml-5 borde-verde radius img-direccion" alt="dirección">
+                    <div id="mapa2" style="width: 100%; height: 200px;"></div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <h6>Estado de la orden:</h6>
                 </div>
-                <div class="col-12 row mb-2 mx-auto">
+                <div class="col-12 col-md-6 row mb-2 mx-auto">
                     <div class="col-6 p-1 text-center"><button id="boton-tomada" class="boton boton-rojo botones-entregando orden-tomada" onclick="estadoOrden('tomada', '${idOrden}');">Tomada</button></div>
                     <div class="col-6 p-1 text-center"><button id="boton-enCamino" class="boton borde-naranja botones-entregando orden-enCamino" onclick="estadoOrden('enCamino', '${idOrden}');">En camino</button></div>
                     <div class="col-6 p-1 text-center"><button id="boton-enOrigen" class="boton borde-naranja botones-entregando orden-enOrigen" onclick="estadoOrden('enOrigen', '${idOrden}');">En origen</button></div>
@@ -382,44 +419,46 @@ function dibujarContenido(valor, idOrden) {
         case 3:
             sectionActual.innerHTML =
             `<div class="titulo-section borde-naranja px-1">Detalle de la entrega</div>
-            <div class="col-12 py-1">
-                <h6>Orden:</h6>
-                <h6 class="texto-gris ml-5">${ordenActual.nombre}</h6>
-            </div>
-            <div class="col-12 py-1">
-                <h6>Cliente:</h6>
-                <h6 class="texto-gris ml-5">${ordenActual.cliente.nombre}</h6>
-            </div>
-            <div class="col-12 py-1">
-                <h6>Empresa:</h6>
-                <h6 class="texto-gris ml-5">${ordenActual.envio.empresa}</h6>
-            </div>
-            <div class="col-12 py-1">
-                <h6>Productos:</h6>
-                <h6 class="texto-gris ml-5">${productos}</h6>
-            </div>
-            <div class="col-12 py-1">
-                <h6>Pago total:</h6>
-                <h6 class="texto-gris ml-5">${ordenActual.envio.total}Lps. </h6>
-            </div>
-            <div class="col-12 py-1">
-                <h6>Precio base:</h6>
-                <h6 class="texto-gris ml-5">${ordenActual.envio.subtotal} Lps.</h6>
-            </div>
-            <div class="col-12 py-1">
-                <h6>ISV (15%):</h6>
-                <h6 class="texto-gris ml-5">${ordenActual.envio.isv} Lps.</h6>
-            </div>
-            <div class="col-12 py-1">
-                <h6>Comisión motorista (10%):</h6>
-                <h6 class="texto-gris ml-5">${ordenActual.envio.comisionMotorista} Lps.</h6>
-            </div>
-            <div class="col-12 py-1">
-                <h6>Comisión administrador (5%):</h6>
-                <h6 class="texto-gris ml-5">${ordenActual.envio.comisionAdministrador} Lps.</h6>
-            </div>
-            <div class="col-12 py-1">
-                <button class="boton boton-naranja float-right mr-1" onclick="irAtras();">Aceptar</button>
+            <div class="row px-3">
+                <div class="col-12 col-md-6 py-1">
+                    <h6>Orden:</h6>
+                    <h6 class="texto-gris ml-5">${ordenActual.nombre}</h6>
+                </div>
+                <div class="col-12 col-md-6 py-1">
+                    <h6>Cliente:</h6>
+                    <h6 class="texto-gris ml-5">${ordenActual.cliente.nombre}</h6>
+                </div>
+                <div class="col-12 col-md-6 py-1">
+                    <h6>Empresa:</h6>
+                    <h6 class="texto-gris ml-5">${ordenActual.envio.empresa}</h6>
+                </div>
+                <div class="col-12 col-md-6 py-1">
+                    <h6>Productos:</h6>
+                    <h6 class="texto-gris ml-5">${productos}</h6>
+                </div>
+                <div class="col-12 col-md-6 py-1">
+                    <h6>Pago total:</h6>
+                    <h6 class="texto-gris ml-5">${ordenActual.envio.total}Lps. </h6>
+                </div>
+                <div class="col-12 col-md-6 py-1">
+                    <h6>Precio base:</h6>
+                    <h6 class="texto-gris ml-5">${ordenActual.envio.subtotal} Lps.</h6>
+                </div>
+                <div class="col-12 col-md-6 py-1">
+                    <h6>ISV (15%):</h6>
+                    <h6 class="texto-gris ml-5">${ordenActual.envio.isv} Lps.</h6>
+                </div>
+                <div class="col-12 col-md-6 py-1">
+                    <h6>Comisión motorista (10%):</h6>
+                    <h6 class="texto-gris ml-5">${ordenActual.envio.comisionMotorista} Lps.</h6>
+                </div>
+                <div class="col-12 col-md-6 py-1">
+                    <h6>Comisión administrador (5%):</h6>
+                    <h6 class="texto-gris ml-5">${ordenActual.envio.comisionAdministrador} Lps.</h6>
+                </div>
+                <div class="col-12 py-1">
+                    <button class="boton boton-naranja float-right mr-1" onclick="irAtras();">Aceptar</button>
+                </div>
             </div>`;
     }
 
