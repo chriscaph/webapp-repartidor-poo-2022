@@ -181,7 +181,7 @@ var ordenes = [
             comisionAdministrador: 48.74,
             total: 292.44,
             estado: null,
-            coordenadas: null,
+            coordenadas: [87, -90],
             motorista: null,
 
         }
@@ -205,7 +205,7 @@ function cambiarSection(valor) {
                 `<div class="p-1">
                     <div class="borde-azul p-1 radius contenedor-verOrdenes">
                         <h4 class="pl-2 texto-gris mt-2">${orden.nombre}</h4>
-                        <button class="boton boton-naranja" onclick="abrirOrden(1); dibujarContenido(1, '${orden.codigo}');">ver orden</button>
+                        <button class="boton boton-naranja" onclick="abrirOrden(1); dibujarContenido(1, '${orden.codigo}'); cargarMapa();">ver orden</button>
                     </div>
                 </div>`;
             });
@@ -319,7 +319,7 @@ function dibujarContenido(valor, idOrden) {
                 <div class="col-12">
                     <h6>Dirección:</h6>
                     <h6 class="texto-gris ml-5">${ordenActual.envio.direccion}</h6>
-                    <img src="img/${ordenActual.envio.imagen}" class="ml-5 borde-verde radius img-direccion" alt="dirección">
+                    <div id="mapa" style="width: 100%; height: 200px;"></div>
                 </div>
             </div>
             <button class="boton boton-naranja float-right mt-2 mr-2" onclick="tomarOrden('${idOrden}');">Tomar orden</button>`;
