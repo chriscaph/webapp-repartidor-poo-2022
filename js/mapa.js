@@ -1,6 +1,4 @@
-function cargarMapa() {
-    let latitud = 14.07425613883513;
-    let longitud = -87.17472108959961;
+function cargarMapa(longitud, latitud) {
 
     coordenadas = {
         lng: longitud,
@@ -29,9 +27,7 @@ function generarMapa(coordenadas) {
     });
 }
 
-function cargarMapa2() {
-    let latitud = 14.07425613883513;
-    let longitud = -87.17472108959961;
+function cargarMapa2(longitud, latitud) {
 
     coordenadas = {
         lng: longitud,
