@@ -1,5 +1,29 @@
 var ordenActual;
 
+var idRepartidor = obtenerParametro('id');
+var idSession = obtenerParametro('ses');
+var nombreMotorista = obtenerParametro('nom');
+
+if (idSession.length == 0) {
+    idSession = '1';
+}
+
+function verificarSesion() {
+    axios({
+        method: 'get',
+        url: `http://localhost:4200/sesiones/${idSession}`,
+    })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.codigo == 0) {
+                window.open(`login.html`, '_self');
+            }
+        })
+        .catch(error => console.log('error de la verificación', error));
+}
+
+verificarSesion();
+
 function llamarModal(orden) {
     $('#modal').modal(orden);
 }
@@ -38,7 +62,7 @@ function cambiarSection(valor) {
 
             axios({
                 method: 'GET',
-                url: `http://localhost:4200/ordenes/sinEntregar/62e5c9f117b9fb407648e93f`
+                url: `http://localhost:4200/ordenes/sinEntregar/${idRepartidor}`
             })
                 .then(res => {
                     let ordenesSinEntregar = res.data;
@@ -64,7 +88,7 @@ function cambiarSection(valor) {
 
             axios({
                 method: 'GET',
-                url: `http://localhost:4200/ordenes/entregadas/62e5c9f117b9fb407648e93f`
+                url: `http://localhost:4200/ordenes/entregadas/${idRepartidor}`
             })
                 .then(res => {
                     let ordenesEntregadas = res.data
@@ -281,7 +305,7 @@ function tomarOrden(idOrden) {
     axios({
         method: 'PUT',
         url: `http://localhost:4200/ordenes/${idOrden}`,
-        data: { _id: '62e5c9f117b9fb407648e93f' }
+        data: { _id: idRepartidor }
     })
         .then(res => {
             modalRepartidor.innerHTML =
@@ -365,7 +389,7 @@ function estadoOrden(estado, idOrden) {
                     </div>
                     <div class="col-12 py-1">
                         <h6>Motorista:</h6>
-                        <h6 class="texto-gris ml-5">${o.motorista}</h6>
+                        <h6 class="texto-gris ml-5">${nombreMotorista}</h6>
                     </div>
                     <div class="col-12 py-1">
                         <h6>Dirección de entrega:</h6>
@@ -431,4 +455,15 @@ function actualizarBotones(idOrden) {
             document.getElementById(`boton-${estado}`).classList.add('boton-rojo');
             document.getElementById(`boton-${estado}`).classList.remove('borde-naranja');
         })
+}
+
+function obtenerParametro(valor){
+    valor = valor.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    let expresionRegular = "[\\?&]" + valor + "=([^&#]*)";
+    let regex = new RegExp(expresionRegular);
+    let r = regex.exec( window.location.href );
+    if( r == null )
+        return "";
+    else
+        return decodeURIComponent(r[1].replace(/\ + /g, " "));
 }

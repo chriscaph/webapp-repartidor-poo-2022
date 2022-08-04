@@ -30,7 +30,7 @@ function validarFormulario1() {
                     <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal();">Aceptar</button>`;
                     abrirModal();
                 } else {
-                    window.open('repartidor.html', '_self');
+                    window.open(`repartidor.html?ses=${res.data.idSession}&id=${res.data.id}&nom=${res.data.nombre}`, '_self')
                 }
                 
             })
