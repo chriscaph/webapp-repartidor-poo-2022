@@ -24,6 +24,13 @@ function verificarSesion() {
 
 verificarSesion();
 
+function cerrarSesion() {
+    axios({
+        method: 'get',
+        url: `http://localhost:4200/sesiones/cerrar/${idSession}`
+    })
+}
+
 function llamarModal(orden) {
     $('#modal').modal(orden);
 }
