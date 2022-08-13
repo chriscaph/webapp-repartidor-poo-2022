@@ -179,11 +179,11 @@ function dibujarContenido(valor, idOrden) {
                         </div>
                         <div class="col-12 col-md-6">
                             <h6>Total a pagar:</h6>
-                            <h6 class="texto-gris ml-5">${ordenActual.envio.total} Lps.</h6>
+                            <h6 class="texto-gris ml-5">${ordenActual.envio.total.toFixed(2)} Lps.</h6>
                         </div>
                         <div class="col-12">
                             <h6>Dirección:</h6>
-                            <h6 class="texto-gris ml-5">${ordenActual.envio.direccion}</h6>
+                            <h6 class="texto-gris pl-5">${ordenActual.envio.direccion}</h6>
                             <div id="mapa" style="width: 100%; height: 200px;" class="borde-verde"></div>
                         </div>
                     </div>
@@ -223,7 +223,7 @@ function dibujarContenido(valor, idOrden) {
                         </div>
                         <div class="col-12 col-md-6">
                             <h6>Total a pagar:</h6>
-                            <h6 class="texto-gris ml-5">${ordenActual.envio.total} Lps.</h6>
+                            <h6 class="texto-gris ml-5">${ordenActual.envio.total.toFixed(2)} Lps.</h6>
                         </div>
                         <div class="col-12 mb-3">
                             <h6>Dirección:</h6>
@@ -269,23 +269,23 @@ function dibujarContenido(valor, idOrden) {
                         </div>
                         <div class="col-12 col-md-6 py-1">
                             <h6>Pago total:</h6>
-                            <h6 class="texto-gris ml-5">${ordenActual.envio.total}Lps. </h6>
+                            <h6 class="texto-gris ml-5">${ordenActual.envio.total.toFixed(2)}Lps. </h6>
                         </div>
                         <div class="col-12 col-md-6 py-1">
                             <h6>Precio base:</h6>
-                            <h6 class="texto-gris ml-5">${ordenActual.envio.subtotal} Lps.</h6>
+                            <h6 class="texto-gris ml-5">${ordenActual.envio.subtotal.toFixed(2)} Lps.</h6>
                         </div>
                         <div class="col-12 col-md-6 py-1">
                             <h6>ISV (15%):</h6>
-                            <h6 class="texto-gris ml-5">${ordenActual.envio.isv} Lps.</h6>
+                            <h6 class="texto-gris ml-5">${ordenActual.envio.isv.toFixed(2)} Lps.</h6>
                         </div>
                         <div class="col-12 col-md-6 py-1">
                             <h6>Comisión motorista (10%):</h6>
-                            <h6 class="texto-gris ml-5">${ordenActual.envio.comisionMotorista} Lps.</h6>
+                            <h6 class="texto-gris ml-5">${ordenActual.envio.comisionMotorista.toFixed(2)} Lps.</h6>
                         </div>
                         <div class="col-12 col-md-6 py-1">
                             <h6>Comisión administrador (5%):</h6>
-                            <h6 class="texto-gris ml-5">${ordenActual.envio.comisionAdministrador} Lps.</h6>
+                            <h6 class="texto-gris ml-5">${ordenActual.envio.comisionAdministrador.toFixed(2)} Lps.</h6>
                         </div>
                         <div class="col-12 py-1">
                             <button class="boton boton-naranja float-right mr-1" onclick="irAtras();">Aceptar</button>
@@ -306,7 +306,7 @@ function tomarOrden(idOrden) {
     })
         .then(res => {
             modalRepartidor.innerHTML =
-                `<h4 class="titulo-modal mt-2 mb-5 text-center">${res.data.mensaje}</h4>
+                `<h5 class="titulo-modal mt-2 mb-5 text-center">${res.data.mensaje}</h5>
                 <div class="check mt-3 mb-4 text-center">
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
@@ -394,26 +394,26 @@ function estadoOrden(estado, idOrden) {
                     </div>
                     <div class="col-12 py-1">
                         <h6>Pago del cliente:</h6>
-                        <h6 class="texto-gris ml-5">${o.envio.total} Lps.</h6>
+                        <h6 class="texto-gris ml-5">${o.envio.total.toFixed(2)} Lps.</h6>
                     </div>
                     <div class="col-12 py-1">
                         <h6>Precio base:</h6>
-                        <h6 class="texto-gris ml-5">${o.envio.subtotal} Lps.</h6>
+                        <h6 class="texto-gris ml-5">${o.envio.subtotal.toFixed(2)} Lps.</h6>
                     </div>
                     <div class="col-12 py-1">
                         <h6>ISV (15%):</h6>
-                        <h6 class="texto-gris ml-5">${o.envio.isv} Lps.</h6>
+                        <h6 class="texto-gris ml-5">${o.envio.isv.toFixed(2)} Lps.</h6>
                     </div>
                     <div class="col-12 py-1">
                         <h6>Comisión motorista (10%):</h6>
-                        <h6 class="texto-gris ml-5">${o.envio.comisionMotorista} Lps.</h6>
+                        <h6 class="texto-gris ml-5">${o.envio.comisionMotorista.toFixed(2)} Lps.</h6>
                     </div>
                     <div class="col-12 py-1">
                         <h6>Comisión administrador (5%):</h6>
-                        <h6 class="texto-gris ml-5">${o.envio.comisionMotorista} Lps.</h6>
+                        <h6 class="texto-gris ml-5">${o.envio.comisionMotorista.toFixed(2)} Lps.</h6>
                     </div>
                     <div class="col-12 py-1 text-center">
-                        <button class="boton borde-naranja text-center"><h5 class="b-0 m-0" onclick="llamarModal('hide'); irAtras(); cambiarSection(2);">Finalizar</h5></button>
+                        <button class="boton boton-naranja text-center"><h5 class="b-0 m-0" onclick="llamarModal('hide'); irAtras(); cambiarSection(2);">Finalizado</h5></button>
                     </div>
                 </div>`;
 
