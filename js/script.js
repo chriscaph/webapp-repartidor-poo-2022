@@ -14,12 +14,10 @@ function verificarSesion() {
         url: `http://localhost:4200/sesiones/${idSession}`,
     })
         .then(res => {
-            console.log(res.data);
             if (res.data.codigo == 0) {
                 window.open(`login.html`, '_self');
             }
         })
-        .catch(error => console.log('error de la verificación', error));
 }
 
 verificarSesion();
@@ -58,9 +56,6 @@ function cambiarSection(valor) {
                             </div>`;
                     });
                 })
-                .catch(error => {
-                    console.log(error);
-                });
 
             break;
 
@@ -84,9 +79,6 @@ function cambiarSection(valor) {
                 </div>`;
                     });
                 })
-                .catch(error => {
-                    console.log(error);
-                });
 
             break;
 
@@ -110,7 +102,6 @@ function cambiarSection(valor) {
                             </div>`;
                     });
                 })
-                .catch(error => console.log(error));
 
             break;
     }
@@ -302,7 +293,6 @@ function dibujarContenido(valor, idOrden) {
                     </div>`;
             }
         })
-        .catch(error => console.log(error));
 
 }
 
@@ -440,8 +430,6 @@ function estadoOrden(estado, idOrden) {
                 url: `http://localhost:4200/ordenes/tomada/${idOrden}`,
                 data: o
             })
-                .then(res => console.log(res.data))
-                .catch(error => console.log(error));
 
         })
 }
