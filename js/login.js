@@ -1,7 +1,3 @@
-sectionLogin = document.getElementById('section-login');
-sectionRegistration = document.getElementById('section-registration');
-modalBodySesion = document.getElementById('modal-body-sesion');
-
 function validarFormulario1() {
     let txtusuario = document.getElementById('txtusuario-login');
     let txtpassword = document.getElementById('txtpassword-login');
@@ -100,3 +96,8 @@ function cerrarModal() {
     modalBodySesion.parentNode.classList.remove('borde-verde');
     modalBodySesion.parentNode.classList.add('borde-rojo');
 }
+
+//######################
+sectionLogin = document.getElementById('section-login');
+sectionRegistration = document.getElementById('section-registration');
+modalBodySesion = document.getElementById('modal-body-sesion');

@@ -1,16 +1,3 @@
-var ordenActual;
-
-var idRepartidor = obtenerParametro('id');
-var idSession = obtenerParametro('ses');
-var nombreMotorista = obtenerParametro('nom');
-
-var modalRepartidor = document.getElementById('modal-body-repartidor');
-var modalRepartidor2 = document.getElementById('modal-body-repartidor2');
-
-if (idSession.length == 0) {
-    idSession = '1';
-}
-
 function verificarSesion() {
     axios({
         method: 'get',
@@ -22,8 +9,6 @@ function verificarSesion() {
             }
         })
 }
-
-verificarSesion();
 
 function cerrarSesion() {
     axios({
@@ -415,7 +400,7 @@ function estadoOrden(estado, idOrden) {
                     </div>
                     <div class="col-12 py-1">
                         <h6>Comisión administrador (5%):</h6>
-                        <h6 class="texto-gris ml-5">${o.envio.comisionMotorista.toFixed(2)} Lps.</h6>
+                        <h6 class="texto-gris ml-5">${o.envio.comisionAdministrador.toFixed(2)} Lps.</h6>
                     </div>
                     <div class="col-12 py-1 text-center">
                         <button class="boton boton-naranja text-center"><h5 class="b-0 m-0" onclick="llamarModal('hide'); irAtras(); cambiarSection(2);">Finalizado</h5></button>
@@ -669,3 +654,19 @@ function cerrarModal2() {
 function abrirModal2() {
     $('#modal2').modal('show');
 }
+
+//###################################
+var ordenActual;
+
+var idRepartidor = obtenerParametro('id');
+var idSession = obtenerParametro('ses');
+var nombreMotorista = obtenerParametro('nom');
+
+var modalRepartidor = document.getElementById('modal-body-repartidor');
+var modalRepartidor2 = document.getElementById('modal-body-repartidor2');
+
+if (idSession.length == 0) {
+    idSession = '1';
+}
+
+verificarSesion();
