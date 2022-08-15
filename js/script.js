@@ -4,6 +4,9 @@ var idRepartidor = obtenerParametro('id');
 var idSession = obtenerParametro('ses');
 var nombreMotorista = obtenerParametro('nom');
 
+var modalRepartidor = document.getElementById('modal-body-repartidor');
+var modalRepartidor2 = document.getElementById('modal-body-repartidor2');
+
 if (idSession.length == 0) {
     idSession = '1';
 }
@@ -30,6 +33,11 @@ function cerrarSesion() {
 }
 
 function llamarModal(orden) {
+    if (orden == 'hide') {
+        modalRepartidor.parentNode.classList.add('borde-naranja');
+        modalRepartidor.parentNode.classList.remove('borde-verde');
+        modalRepartidor.parentNode.classList.remove('borde-rojo');
+    }
     $('#modal').modal(orden);
 }
 
@@ -297,7 +305,6 @@ function dibujarContenido(valor, idOrden) {
 }
 
 function tomarOrden(idOrden) {
-    modalRepartidor = document.getElementById('modal-body-repartidor');
 
     axios({
         method: 'PUT',
@@ -361,8 +368,6 @@ function estadoOrden(estado, idOrden) {
             } else {
 
                 o.estado = estado;
-
-                modalRepartidor = document.getElementById('modal-body-repartidor');
 
                 let productos = '';
                 o.envio.productos.forEach(producto => {
@@ -461,4 +466,206 @@ function obtenerParametro(valor){
         return "";
     else
         return decodeURIComponent(r[1].replace(/\ + /g, " "));
+}
+
+function editUser() {
+    modalRepartidor.innerHTML = 
+        `<div class="row my-4 mx-2">
+            <h4 class="col-12 text-center titulo-modal mb-4">¿Qué quieres cambiar?</h4>
+            <button class="boton boton-verde col-12" style="height: 50px;" onclick="editarUsuario();">Cambiar usuario</button>
+            <button class="boton boton-naranja col-12" style="height: 50px;" onclick="editarPassword();">Cambiar contraseña</button>
+        </div>`;
+    abrirModal();
+}
+
+function editarUsuario() {
+    modalRepartidor.innerHTML = 
+        `<h4 class="text-center titulo-modal mt-4">Editar usuario</h4>
+        <div>
+            <h5 class="mt-3 text-left">Usuario actual:</h5>
+            <input type="text" class="form-control borde-naranja" id="txtusuarioActual" required>
+        </div>
+        <div>
+            <h5 class="mt-3 text-left">Nuevo usuario:</h5>
+            <input type="text" class="form-control borde-naranja" id="txtusuarioNuevo" required>
+        </div>
+        <div>
+            <h5 class="mt-3 text-left">Escribe tu contraseña:</h5>
+            <input type="password" class="form-control borde-naranja" id="txtpassword" required>
+        </div>
+        <div class="text-center mb-4">
+            <button class="boton boton-verde mt-3" onclick="verificarCambioUsuario();">Aceptar</button>
+            <button class="boton boton-blanco mt-3" onclick="llamarModal('hide');">Cancelar</button>
+        </div>`;
+}
+
+function editarPassword() {
+    modalRepartidor.innerHTML = 
+        `<h4 class="text-center titulo-modal mt-4">Editar contraseña</h4>
+        <div>
+            <h5 class="mt-3 text-left">Usuario:</h5>
+            <input type="text" class="form-control borde-naranja" id="txtusuarioActual" required>
+        </div>
+        <div>
+            <h5 class="mt-3 text-left">Contraseña actual:</h5>
+            <input type="password" class="form-control borde-naranja" id="txtpasswordActual" required>
+        </div>
+        <div>
+            <h5 class="mt-3 text-left">Nueva contraseña:</h5>
+            <input type="password" class="form-control borde-naranja" id="txtpasswordNuevo" required>
+        </div>
+        <div>
+            <h5 class="mt-3 text-left">Nueva contraseña (de nuevo):</h5>
+            <input type="password" class="form-control borde-naranja" id="txtpasswordNuevo2" required>
+        </div>
+        <div class="text-center mb-4">
+            <button class="boton boton-verde mt-2" onclick="verificarCambioPassword();">Aceptar</button>
+            <button class="boton boton-blanco mt-2" onclick="llamarModal('hide');">Cancelar</button>
+        </div>`;
+}
+
+function verificarCambioUsuario() {
+    let usuarioActual = document.getElementById('txtusuarioActual').value;
+    let nuevoUsuario = document.getElementById('txtusuarioNuevo').value;
+    let password = document.getElementById('txtpassword').value;
+
+    if (usuarioActual != '' && nuevoUsuario != '' && password != '') {
+        usuario = {
+            usuario: usuarioActual,
+            password: password,
+            tipo: 'B'
+        }
+    
+        axios({
+            method: 'POST',
+            url: 'http://localhost:4200/usuarios/login/B',
+            data: usuario
+        })
+            .then(res => {
+                if (res.data.codigo == 0) {
+                    modalRepartidor2.parentNode.classList.remove('borde-naranja');
+                    modalRepartidor2.parentNode.classList.remove('borde-verde');
+                    modalRepartidor2.parentNode.classList.add('borde-rojo');
+                    modalRepartidor2.innerHTML =
+                        `<h5 class="titulo-modal my-4 text-center">Usuario actual o contraseña incorrectas</h5>
+                        <div class="error my-3 text-center">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <div class="text-center">
+                        <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
+                        </div>`;
+                    llamarModal('hide');
+                    abrirModal2();
+                } else {
+                    axios({
+                        method: 'PUT',
+                        url: `http://localhost:4200/usuarios/usuario/${idRepartidor}`,
+                        data: {usuario: nuevoUsuario}
+                    })
+                        .then(() => {
+                            modalRepartidor2.parentNode.classList.remove('borde-naranja');
+                            modalRepartidor2.parentNode.classList.add('borde-verde');
+                            modalRepartidor2.parentNode.classList.remove('borde-rojo');
+                            modalRepartidor2.innerHTML =
+                                `<h5 class="titulo-modal my-4 text-center">¡Usuario actualizado!</h5>
+                                <div class="check my-3 text-center">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </div>
+                                <div class="text-center">
+                                    <button class="boton boton-blanco borde-verde my-4" onclick="cerrarModal2();">Aceptar</button>
+                                </div>`;
+                            llamarModal('hide');
+                            abrirModal2();
+                        })
+                }
+                
+            })
+    }
+}
+
+function verificarCambioPassword() {
+    let usuarioActual = document.getElementById('txtusuarioActual').value;
+    let password = document.getElementById('txtpasswordActual').value;
+    let passwordNuevo = document.getElementById('txtpasswordNuevo').value;
+    let passwordNuevo2 = document.getElementById('txtpasswordNuevo2').value;
+
+    if(usuarioActual != '' && password != '' && passwordNuevo != '' && passwordNuevo2 != '') {
+        if (passwordNuevo != passwordNuevo2) {
+            modalRepartidor2.parentNode.classList.remove('borde-naranja');
+            modalRepartidor2.parentNode.classList.remove('borde-verde');
+            modalRepartidor2.parentNode.classList.add('borde-rojo');
+            modalRepartidor2.innerHTML =
+                `<h5 class="titulo-modal my-4 text-center">Las contraseñas no coinciden</h5>
+                <div class="error my-3 text-center">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="text-center">
+                    <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
+                </div>`;
+            llamarModal('hide');
+            abrirModal2();
+        } else {
+            usuario = {
+                usuario: usuarioActual,
+                password: password,
+                tipo: 'B'
+            }
+        
+            axios({
+                method: 'POST',
+                url: 'http://localhost:4200/usuarios/login/B',
+                data: usuario
+            })
+                .then(res => {
+                    if (res.data.codigo == 0) {
+                        modalRepartidor2.parentNode.classList.remove('borde-naranja');
+                        modalRepartidor2.parentNode.classList.remove('borde-verde');
+                        modalRepartidor2.parentNode.classList.add('borde-rojo');
+                        modalRepartidor2.innerHTML =
+                            `<h5 class="titulo-modal my-4 text-center">Usuario actual o contraseña incorrectas</h5>
+                            <div class="error my-3 text-center">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                            <div class="text-center">
+                                <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
+                            </div>`;
+                        llamarModal('hide');
+                        abrirModal2();
+                    } else {
+                        axios({
+                            method: 'PUT',
+                            url: `http://localhost:4200/usuarios/password/${idRepartidor}`,
+                            data: {password: passwordNuevo}
+                        })
+                        .then(() => {
+                            modalRepartidor2.parentNode.classList.remove('borde-naranja');
+                            modalRepartidor2.parentNode.classList.add('borde-verde');
+                            modalRepartidor2.parentNode.classList.remove('borde-rojo');
+                            modalRepartidor2.innerHTML =
+                                `<h5 class="titulo-modal my-4 text-center">¡Contraseña actualizada!</h5>
+                                <div class="check my-3 text-center">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </div>
+                                <div class="text-center">
+                                    <button class="boton boton-blanco borde-verde my-4" onclick="cerrarModal2();">Aceptar</button>
+                                </div>`;
+                            llamarModal('hide');
+                            abrirModal2();
+                        })
+                    }
+                    
+                })
+        }
+    }
+}
+
+function cerrarModal2() {
+    $('#modal2').modal('hide');
+    modalRepartidor2.parentNode.classList.add('borde-naranja');
+    modalRepartidor2.parentNode.classList.remove('borde-verde');
+    modalRepartidor2.parentNode.classList.remove('borde-rojo');
+}
+
+function abrirModal2() {
+    $('#modal2').modal('show');
 }
